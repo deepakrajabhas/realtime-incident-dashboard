@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Incident Dashboard</title>
+</head>
+<body>
+
+<h2>Create Incident</h2>
+<input id="title" placeholder="Title" />
+<select id="severity">
+  <option>Low</option>
+  <option>High</option>
+</select>
+<button onclick="createIncident()">Create</button>
+
+<h2>Live Incidents</h2>
+<ul id="list"></ul>
+
+<script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+
+<script>
+  const socket = io("http://localhost:3000");
+
+  socket.on("connect", () => {
+    console.log("Connected to server");
+  });
+
+  socket.on("new_incident", (data) => {
+    addToList(data);
+  });
+
+  function createIncident() {
+    const title = document.getElementById("title").value;
+    const severity = document.getElementById("severity").value;
+
+    fetch("http://localhost:3000/incident", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ title, severity }),
+    });
+  }
+
+  function addToList(item) {
+    const li = document.createElement("li");
+    li.innerText = `${item.title} - ${item.severity}`;
+    document.getElementById("list").appendChild(li);
+  }
+</script>
+
+</body>
+</html>
