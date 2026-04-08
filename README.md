@@ -13,10 +13,14 @@ A simple real-time incident dashboard demonstrating event-driven architecture us
 - Socket.IO
 - HTML, JavaScript
 
-## Architecture
-Client → REST API → Server → WebSocket Broadcast → Clients
+## ArchitectureThis application demonstrates a real-time event-driven architecture:
+
+1. Client sends incident via REST API
+2. Server processes and emits event
+3. WebSocket broadcasts to all connected clients
+4. UI updates instantly without refresh
 
 ## Key Concepts Demonstrated
-- Event-driven system design
-- Real-time communication
-- Full-stack ownership
+- Real-time communication using WebSockets
+- Event-driven backend design
+- Full-stack integration (API + UI + real-time layer)
