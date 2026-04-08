@@ -31,6 +31,10 @@
     addToList(data);
   });
 
+  socket.on("connect_error", (err) => {
+    console.log("❌ Connection Error:", err.message);
+  });
+
   function createIncident() {
     const title = document.getElementById("title").value;
     const severity = document.getElementById("severity").value;
