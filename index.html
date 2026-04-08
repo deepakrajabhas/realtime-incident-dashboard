@@ -27,6 +27,7 @@
   });
 
   socket.on("new_incident", (data) => {
+    console.log(JSON.Stringify(data));
     addToList(data);
   });
 
