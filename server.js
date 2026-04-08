@@ -37,9 +37,7 @@ app.post("/incident", (req, res) =>{
 		severity,
 		time: new Date(),
 	};
-	console.log(newIncident);
 	incidents.push(newIncident);
-	console.log(incidents);
 	io.emit("new_incident", newIncident);
 
 	res.json({message : "Incident created", data: newIncident });
