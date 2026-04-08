@@ -39,7 +39,8 @@
     const title = document.getElementById("title").value;
     const severity = document.getElementById("severity").value;
 
-    fetch("http://localhost:3000/incident", {
+    //fetch("http://localhost:3000/incident", {
+    fetch("/incident", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
